@@ -1,0 +1,48 @@
+<div class="navbar">
+
+  <div class="selector cherger-radius">
+    <!-- <label for="charger-radius-selector">Показать зарядки в радиусе:</label> -->
+    <select name="" id="charger-radius-selector" (change)="chargerRadiusSelect($event)">
+      <option value="" selected disabled >Зарядные в радиусе</option>
+      <option value="1000">1 километра</option>
+      <option value="5000">5 километров</option>
+      <option value="10000">10 километров</option>
+      <option value="30000">30 километров</option>
+      <option value="5000000">5000 километров</option>
+    </select>
+  </div>
+
+  <div class="selector activity">
+    <!-- <label for="activity-selector">Чем заняться:</label> -->
+    <select name="" id="activity-selector" (change)="activitySelect($event)" [disabled]="!isActivityEnabled">
+      <option value="" selected disable>Чем заняться:</option>
+      <option value="cafe">Покушать</option>
+      <option value="cinema">Посмотерть кино</option>
+      <option value="massage">Зайти в массажный салон</option>
+    </select>
+  </div>
+
+  <div class="selector walk-radius">
+    <!-- <label for="walk-radius-selector">Максимальное расстояние от зарядки:</label> -->
+    <select name="" id="walk-radius-selector" [disabled]="!isWalkRadiusEnabled">
+      <option value="" selected disable>Расстояние от зарядки: </option>
+      <option value="100">100 метров</option>
+      <option value="500">500 метров</option>
+      <option value="1000">1 километр</option>
+    </select>
+  </div>
+
+</div>
+
+@if(errorMessage) {
+  <div class="error">
+    <div class="close" (click)="closeErrorMessage()">
+      <p>X</p>
+    </div>
+    <div>
+      {{ errorMessage }}
+    </div>
+  </div>
+}
+
+<div id="map"></div>
